@@ -1,15 +1,30 @@
-[main]
-secret = "your-32-hex-chars-secret"  # Секретный ключ 
+show_link = ["user1"]
 
-[transport.socks]
-enabled = true
-port = 9090
+[general]
+prefer_ipv6 = false
+fast_mode = true
+use_middle_proxy = false
 
-[transport.grpc]
-enabled = true
-port = 9090
+[general.modes]
+classic = false 
+secure = false 
+tls = true 
 
-[transport.mtproto]
-enabled = true
+[server]
 port = 443
-tls = true  # Включает fake TLS для обхода блокировок
+listen_addr_ipv4 = "0.0.0.0"
+listen_addr_ipv6 = "::"
+
+[censorship]
+tls_domain = "https://ya.ru/   # домен для SNI (пример! см. ниже)
+mask = true # Включает проксирование реального сайта
+mask_port = 443
+fake_cert_len = 2048
+
+[access.users]
+user1 = "ВАШ_СЕКРЕТ_ИЗ_ШАГА_2"
+
+[[upstreams]]
+type = "direct"
+enabled = true
+weight = 10
