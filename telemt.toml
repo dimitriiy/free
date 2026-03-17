@@ -1,0 +1,15 @@
+[main]
+secret = "your-32-hex-chars-secret"  # Секретный ключ 
+
+[transport.socks]
+enabled = true
+port = 9090
+
+[transport.grpc]
+enabled = true
+port = 9090
+
+[transport.mtproto]
+enabled = true
+port = 443
+tls = true  # Включает fake TLS для обхода блокировок
